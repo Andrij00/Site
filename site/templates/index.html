@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% for type, message in get_flashed_messages(True) %}
+    <div class="alert {{type}} m-3 position-absolute top-0 end-0"> {{message}} </div>
+    {% endfor %}
      <h1 class="my-5">Онлайн-магазин м'ячів</h1>
      <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
@@ -23,7 +26,7 @@
             <span class="visually-hidden">Next</span>
           </button>
         </div>
-        <section class="items container card-group">
+        <section class="items container card-group py-5">
           {% for item in items %}
           <div class="card m-2 rounded" style="min-width:18rem; max-width:18rem;">
                <img src="{{ url_for('static', filename='img/'+item[4]) }}" class="card-img-top" alt="...">
